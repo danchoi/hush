@@ -14,6 +14,7 @@
 		DE36107E13D15045001DD3B1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE36107C13D15045001DD3B1 /* MainMenu.xib */; };
 		DE36108113D15045001DD3B1 /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = DE36108013D15045001DD3B1 /* rb_main.rb */; };
 		DE36108313D15045001DD3B1 /* AppDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = DE36108213D15045001DD3B1 /* AppDelegate.rb */; };
+		DE36108D13D15669001DD3B1 /* hulu-automuter in Resources */ = {isa = PBXBuildFile; fileRef = DE36108C13D15669001DD3B1 /* hulu-automuter */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		DE36107D13D15045001DD3B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		DE36108013D15045001DD3B1 /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
 		DE36108213D15045001DD3B1 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = AppDelegate.rb; sourceTree = "<group>"; };
+		DE36108C13D15669001DD3B1 /* hulu-automuter */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hulu-automuter"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		DE36107213D15045001DD3B1 /* HuluAutomuter */ = {
 			isa = PBXGroup;
 			children = (
+				DE36108C13D15669001DD3B1 /* hulu-automuter */,
 				DE36108213D15045001DD3B1 /* AppDelegate.rb */,
 				DE36107B13D15045001DD3B1 /* Resources */,
 				DE36107F13D15045001DD3B1 /* Other Sources */,
@@ -174,6 +177,7 @@
 				DE36107E13D15045001DD3B1 /* MainMenu.xib in Resources */,
 				DE36108113D15045001DD3B1 /* rb_main.rb in Resources */,
 				DE36108313D15045001DD3B1 /* AppDelegate.rb in Resources */,
+				DE36108D13D15669001DD3B1 /* hulu-automuter in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

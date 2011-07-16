@@ -6,6 +6,18 @@
 #  Copyright 2011 __MyCompanyName__. All rights reserved.
 #
 
+
+NSLog `pwd `
+NSLog `find .  `
+
+automuter_path = NSBundle.mainBundle.pathForResource("hulu-automuter", ofType:"")
+NSLog `ruby -e "puts 'hi'"`
+`#{automuter_path} & `
+pid_file = "#{ENV['HOME']}/hulu.pid"
+pid = File.read pid_file
+puts "PID: #{pid}"
+
+
 class AppDelegate
     attr_accessor :window, :status_item
     def applicationDidFinishLaunching(a_notification)
@@ -23,6 +35,10 @@ class AppDelegate
 
     def testAction(sender)
       NSLog "testAction"
+    end
+
+    def applicationWillTerminate(application)
+      `kill -9 #{PID}`
     end
 end
 

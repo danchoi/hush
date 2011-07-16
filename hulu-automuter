@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+# Hulu Automuter
+# by Daniel Choi <dhchoi@gmail.com>
+# License: MIT License (c) 2011 Daniel Choi
+
+port = 8123
+
+pid_file = "#{ENV['HOME']}/hulu.pid"
+File.open(pid_file, "w") {|f| f.puts Process.pid}
+
+if ARGV.first =~ /-p/
+  port = ARGV[1] || 8123
+elsif ARGV.first =~ /-v/
+  puts "HuluAutomuter v#{HuluAutomuter::VERSION}"
+  exit
+elsif ARGV.first =~ /-h/
+  puts help
+  exit
+end
+
+require 'webrick/httpproxy'
+
+module HuluControl
+  class Linux
+    def mute
+      "amixer set Master mute"
+    end
+
+    def unmute
+      "amixer set Master unmute"
+    end
+  end
+
+  class OSX
+    def initialize
+      @last_volume = 70
+    end
+
+    def mute
+      vol = `osascript -e "get output volume of (get volume settings)"`.strip.to_i
+      if vol > 0
+        @last_volume = vol
+        puts "Remember last volume: #{@last_volume}"
+      end
+      %Q|osascript -e "set Volume output volume 0"|
+    end
+
+    def unmute
+      %Q|osascript -e "set Volume output volume #{@last_volume}"|
+    end
+  end
+end
+
+hc = case RUBY_PLATFORM
+     when /linux/
+       HuluControl::Linux.new
+     when /darwin/
+       HuluControl::OSX.new
+     else
+       puts "Sorry, your platform (#{RUBY_PLATFORM}) is not supported"
+       exit 1
+     end
+
+proxyproc = Proc.new{|req,res| 
+  r = req.path
+  next unless req.host =~ /hulu\.com/
+  if r =~ /adload/ 
+    $stdout.puts ["ad loaded", hc.mute].join(', ')
+    `#{hc.mute}`
+  elsif r =~ /contentplaybackresume/
+    $stdout.puts ["content resuming", hc.unmute].join(', ')
+    `#{hc.unmute}`
+  end
+  nil
+}
+
+$stderr = File.new('/dev/null', 'w')
+#$stderr = File.new('/Users/choi/automuter.log', 'a')
+
+begin
+  s = WEBrick::HTTPProxyServer.new(:Port => port, 
+                                   :BindAddress => '0.0.0.0',
+                                   :RequestCallback => proxyproc)
+rescue 
+  $stderr = STDERR
+  raise
+end
+trap("INT"){s.shutdown}
+
+puts "HuluAutomuter is starting on port #{port}"
+puts "Please remember to configure your web browser to use this HTTP proxy"
+puts "Press CTRL-C to stop"
+
+s.start
+
+puts "Done"
+
