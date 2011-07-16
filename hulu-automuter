@@ -85,7 +85,7 @@ rescue
   $stderr = STDERR
   raise
 end
-trap("INT"){s.shutdown}
+trap("SIGTERM"){s.shutdown}
 
 puts "HuluAutomuter is starting on port #{port}"
 puts "Please remember to configure your web browser to use this HTTP proxy"

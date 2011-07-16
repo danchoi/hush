@@ -10,16 +10,8 @@
 NSLog `pwd `
 NSLog `find .  `
 
-automuter_path = NSBundle.mainBundle.pathForResource("hulu-automuter", ofType:"")
-NSLog `ruby -e "puts 'hi'"`
-`#{automuter_path} & `
-pid_file = "#{ENV['HOME']}/hulu.pid"
-pid = File.read pid_file
-puts "PID: #{pid}"
-
-
 class AppDelegate
-    attr_accessor :window, :status_item
+    attr_accessor :window, :status_item, :task
     def applicationDidFinishLaunching(a_notification)
         # Insert code here to initialize your application
       self.status_item = NSStatusBar.systemStatusBar.
@@ -31,6 +23,24 @@ class AppDelegate
       status_item.setAction :'testAction:'
       status_item.setTarget self
       NSLog "hello"
+      automuter_path = NSBundle.mainBundle.pathForResource("hulu-automuter", ofType:"")
+      NSLog `ruby -e "puts 'hi'"`
+      # `#{automuter_path} & `
+      #pid_file = "#{ENV['HOME']}/hulu.pid"
+      #pid = File.read pid_file
+      #puts "PID: #{pid}"
+
+      self.task = NSTask.alloc.init
+      output = NSPipe.alloc.init
+      error = NSPipe.alloc.init
+
+      task.setLaunchPath automuter_path
+      task.setStandardOutput output
+      task.setStandardError error
+      task.launch
+      pid = task.processIdentifier
+      puts "PID: #{pid}"
+
     end
 
     def testAction(sender)
@@ -38,7 +48,7 @@ class AppDelegate
     end
 
     def applicationWillTerminate(application)
-      `kill -9 #{PID}`
+      self.task.terminate
     end
 end
 
