@@ -16,6 +16,10 @@ class AppDelegate
     def applicationDidFinishLaunching(a_notification)
         # Insert code here to initialize your application
       `killall hulu-automuter`
+      `networksetup -setwebproxy AirPort 127.0.0.1 8123`
+      `networksetup -setwebproxystate AirPort on`
+
+
       self.status_item = NSStatusBar.systemStatusBar.
         statusItemWithLength NSVariableStatusItemLength
       status_item.highlightMode = true
@@ -39,14 +43,7 @@ class AppDelegate
       task.setLaunchPath automuter_path
       task.setStandardOutput output
       task.setStandardError error
-      self.file = self.task.standardOutput.fileHandleForReading
-      nc = NSNotificationCenter.defaultCenter
-      nc.addObserver(self,
-                     selector: "data_ready:",
-                     name: NSFileHandleReadCompletionNotification,
-                     object: file)
-      
-      file.readInBackgroundAndNotify
+
       task.launch
       pid = task.processIdentifier
       puts "PID: #{pid}"
@@ -57,17 +54,10 @@ class AppDelegate
       NSLog "testAction"
     end
 
-    def data_ready(notification)
-      return
-      data = notification.userInfo[NSFileHandleNotificationDataItem]
-      output = NSString.alloc.initWithData(data, encoding: NSUTF8StringEncoding)
-      NSLog "output: #{output}"
-      self.file.readInBackgroundAndNotify 
-    end
-
     def applicationWillTerminate(application)
       self.task.terminate
       `killall hulu-automuter`
+      `networksetup -setwebproxystate AirPort off`
     end
 end
 
