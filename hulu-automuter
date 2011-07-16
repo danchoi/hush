@@ -65,10 +65,10 @@ proxyproc = Proc.new{|req,res|
   r = req.path
   next unless req.host =~ /hulu\.com/
   if r =~ /adload/ 
-    $stdout.puts ["ad loaded", hc.mute].join(', ')
+    puts ["ad loaded", hc.mute].join(', ')
     `#{hc.mute}`
   elsif r =~ /contentplaybackresume/
-    $stdout.puts ["content resuming", hc.unmute].join(', ')
+    puts ["content resuming", hc.unmute].join(', ')
     `#{hc.unmute}`
   end
   nil
