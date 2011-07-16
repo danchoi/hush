@@ -8,29 +8,38 @@ port = 8123
 pid_file = "#{ENV['HOME']}/hulu.pid"
 File.open(pid_file, "w") {|f| f.puts Process.pid}
 
-if ARGV.first =~ /-p/
-  port = ARGV[1] || 8123
-elsif ARGV.first =~ /-v/
-  puts "HuluAutomuter v#{HuluAutomuter::VERSION}"
-  exit
-elsif ARGV.first =~ /-h/
-  puts help
-  exit
-end
+
+$stdout = File.open("#{ENV['HOME']}/hulu.log", 'a')
 
 require 'webrick/httpproxy'
 
-module HuluControl
-  class Linux
-    def mute
-      "amixer set Master mute"
+
+# This is to raises the max size of the request URI from 1024 t0 4096
+module WEBrick
+  class HTTPRequest
+    # if RUBY_VERSION > '1.9.0'
+
+    def read_request_line(socket)
+      @request_line = read_line(socket, 2048) if socket
+      if @request_line.bytesize >= 2048 and @request_line[-1, 1] != LF
+        raise HTTPStatus::RequestURITooLarge
+      end
+      @request_time = Time.now
+      raise HTTPStatus::EOFError unless @request_line
+      if /^(\S+)\s+(\S++)(?:\s+HTTP\/(\d+\.\d+))?\r?\n/mo =~ @request_line
+        @request_method = $1
+        @unparsed_uri   = $2
+        @http_version   = HTTPVersion.new($3 ? $3 : "0.9")
+      else
+        rl = @request_line.sub(/\x0d?\x0a\z/o, '')
+        raise HTTPStatus::BadRequest, "bad Request-Line `#{rl}'."
+      end
     end
 
-    def unmute
-      "amixer set Master unmute"
-    end
   end
+end
 
+module HuluControl
   class OSX
     def initialize
       @last_volume = 70
@@ -51,31 +60,23 @@ module HuluControl
   end
 end
 
-hc = case RUBY_PLATFORM
-     when /linux/
-       HuluControl::Linux.new
-     when /darwin/
-       HuluControl::OSX.new
-     else
-       puts "Sorry, your platform (#{RUBY_PLATFORM}) is not supported"
-       exit 1
-     end
+hc = HuluControl::OSX.new
 
 proxyproc = Proc.new{|req,res| 
   r = req.path
   next unless req.host =~ /hulu\.com/
   if r =~ /adload/ 
-    puts ["ad loaded", hc.mute].join(', ')
+    $stdout.puts ["ad loaded", hc.mute].join(', ')
     `#{hc.mute}`
   elsif r =~ /contentplaybackresume/
-    puts ["content resuming", hc.unmute].join(', ')
+    $stdout.puts ["content resuming", hc.unmute].join(', ')
     `#{hc.unmute}`
   end
   nil
 }
 
-$stderr = File.new('/dev/null', 'w')
-#$stderr = File.new('/Users/choi/automuter.log', 'a')
+#$stderr = File.open('/dev/null', 'w')
+$stderr = File.open('/Users/choi/hulu2.log', 'a')
 
 begin
   s = WEBrick::HTTPProxyServer.new(:Port => port, 
