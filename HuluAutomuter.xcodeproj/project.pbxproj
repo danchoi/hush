@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE36106E13D15045001DD3B1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE36106D13D15045001DD3B1 /* Cocoa.framework */; };
+		DE36107013D15045001DD3B1 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE36106F13D15045001DD3B1 /* MacRuby.framework */; };
+		DE36107713D15045001DD3B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE36107513D15045001DD3B1 /* InfoPlist.strings */; };
+		DE36107A13D15045001DD3B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE36107913D15045001DD3B1 /* main.m */; };
+		DE36107E13D15045001DD3B1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE36107C13D15045001DD3B1 /* MainMenu.xib */; };
+		DE36108113D15045001DD3B1 /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = DE36108013D15045001DD3B1 /* rb_main.rb */; };
+		DE36108313D15045001DD3B1 /* AppDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = DE36108213D15045001DD3B1 /* AppDelegate.rb */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DE36106913D15045001DD3B1 /* HuluAutomuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuluAutomuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE36106D13D15045001DD3B1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DE36106F13D15045001DD3B1 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = System/Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
+		DE36107413D15045001DD3B1 /* HuluAutomuter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HuluAutomuter-Info.plist"; sourceTree = "<group>"; };
+		DE36107613D15045001DD3B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE36107813D15045001DD3B1 /* HuluAutomuter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HuluAutomuter-Prefix.pch"; sourceTree = "<group>"; };
+		DE36107913D15045001DD3B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE36107D13D15045001DD3B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DE36108013D15045001DD3B1 /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
+		DE36108213D15045001DD3B1 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = AppDelegate.rb; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE36106613D15045001DD3B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE36106E13D15045001DD3B1 /* Cocoa.framework in Frameworks */,
+				DE36107013D15045001DD3B1 /* MacRuby.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE36105E13D15044001DD3B1 = {
+			isa = PBXGroup;
+			children = (
+				DE36107213D15045001DD3B1 /* HuluAutomuter */,
+				DE36106C13D15045001DD3B1 /* Frameworks */,
+				DE36106A13D15045001DD3B1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE36106A13D15045001DD3B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE36106913D15045001DD3B1 /* HuluAutomuter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE36106C13D15045001DD3B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE36106D13D15045001DD3B1 /* Cocoa.framework */,
+				DE36106F13D15045001DD3B1 /* MacRuby.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE36107213D15045001DD3B1 /* HuluAutomuter */ = {
+			isa = PBXGroup;
+			children = (
+				DE36108213D15045001DD3B1 /* AppDelegate.rb */,
+				DE36107B13D15045001DD3B1 /* Resources */,
+				DE36107F13D15045001DD3B1 /* Other Sources */,
+				DE36107313D15045001DD3B1 /* Supporting Files */,
+			);
+			path = HuluAutomuter;
+			sourceTree = "<group>";
+		};
+		DE36107313D15045001DD3B1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE36107413D15045001DD3B1 /* HuluAutomuter-Info.plist */,
+				DE36107513D15045001DD3B1 /* InfoPlist.strings */,
+				DE36107813D15045001DD3B1 /* HuluAutomuter-Prefix.pch */,
+				DE36107913D15045001DD3B1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE36107B13D15045001DD3B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE36107C13D15045001DD3B1 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DE36107F13D15045001DD3B1 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DE36108013D15045001DD3B1 /* rb_main.rb */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		DE36107113D15045001DD3B1 /* Deployment */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--compile --embed";
+			buildConfigurationList = DE36108913D15045001DD3B1 /* Build configuration list for PBXLegacyTarget "Deployment" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/macruby_deploy;
+			dependencies = (
+			);
+			name = Deployment;
+			passBuildSettingsInEnvironment = 1;
+			productName = Deployment;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		DE36106813D15045001DD3B1 /* HuluAutomuter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE36108613D15045001DD3B1 /* Build configuration list for PBXNativeTarget "HuluAutomuter" */;
+			buildPhases = (
+				DE36106513D15045001DD3B1 /* Sources */,
+				DE36106613D15045001DD3B1 /* Frameworks */,
+				DE36106713D15045001DD3B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HuluAutomuter;
+			productName = HuluAutomuter;
+			productReference = DE36106913D15045001DD3B1 /* HuluAutomuter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE36106013D15044001DD3B1 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE36106313D15044001DD3B1 /* Build configuration list for PBXProject "HuluAutomuter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DE36105E13D15044001DD3B1;
+			productRefGroup = DE36106A13D15045001DD3B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE36106813D15045001DD3B1 /* HuluAutomuter */,
+				DE36107113D15045001DD3B1 /* Deployment */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE36106713D15045001DD3B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE36107713D15045001DD3B1 /* InfoPlist.strings in Resources */,
+				DE36107E13D15045001DD3B1 /* MainMenu.xib in Resources */,
+				DE36108113D15045001DD3B1 /* rb_main.rb in Resources */,
+				DE36108313D15045001DD3B1 /* AppDelegate.rb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE36106513D15045001DD3B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE36107A13D15045001DD3B1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE36107513D15045001DD3B1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE36107613D15045001DD3B1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE36107C13D15045001DD3B1 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE36107D13D15045001DD3B1 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE36108413D15045001DD3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DE36108513D15045001DD3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DE36108713D15045001DD3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HuluAutomuter/HuluAutomuter-Prefix.pch";
+				INFOPLIST_FILE = "HuluAutomuter/HuluAutomuter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DE36108813D15045001DD3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HuluAutomuter/HuluAutomuter-Prefix.pch";
+				INFOPLIST_FILE = "HuluAutomuter/HuluAutomuter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DE36108A13D15045001DD3B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		DE36108B13D15045001DD3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE36106313D15044001DD3B1 /* Build configuration list for PBXProject "HuluAutomuter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE36108413D15045001DD3B1 /* Debug */,
+				DE36108513D15045001DD3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE36108613D15045001DD3B1 /* Build configuration list for PBXNativeTarget "HuluAutomuter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE36108713D15045001DD3B1 /* Debug */,
+				DE36108813D15045001DD3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DE36108913D15045001DD3B1 /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE36108A13D15045001DD3B1 /* Debug */,
+				DE36108B13D15045001DD3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE36106013D15044001DD3B1 /* Project object */;
+}

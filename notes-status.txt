@@ -1,0 +1,414 @@
+Extending an Application or Providing a Service via a Menulet
+
+   by Andrew Turner
+
+                                Introduction
+
+   Most modern operating systems have some constantly viewable area that
+   displays useful icons, data, and notifications relating to your
+   computer and other services. Windows uses the 'task tray', the Linux
+   freedesktop.org specifies a 'system tray', and Mac OS X uses the
+   menubar. On the Mac, this menubar is where users see the date/time,
+   audio volume, spotlight icon, and any other number of tools they can
+   install to display information.
+
+   The menubar icons and tools are frequently called 'menulets', or status
+   items. Menulets can be an application unto themselves, such as
+   MenuMeters (http://www.ragingmenace.com/ software/menumeters/), which
+   displays the current CPU, memory, or network usage as graphs and
+   blinking lights. A menulet can also extend a larger application such as
+   DesktopManager's (http://desktopmanager.berlios.de/) menulet that
+   allows a user another means to switch between multiple virtual desktops
+   and can display the current viewable desktop.
+
+                  Figure 1: Example Menubar with Menulets.
+
+   Figure 1 shows an example menubar with the menulets (from left to
+   right): DesktopManager, Salling Clicker, Applescript Menu, MissingSync,
+   MenuMeters, Date/Time, Audio, and Spotlight.
+
+   There are two major 'flavors' of menulets: the standard and publicly
+   documented NSStatusItem and the private and undocumented NSMenuExtra.
+   NSStatusItems are fully capable of doing most anything a menulet can
+   do. The one major benefit of an NSMenuExtra is the ability to
+   mouse-drag reorder the menulet with regards to the other system
+   menulets, whereas NSStatusItems are placed further along the left-side
+   of the menulets area of the menubar. Because the NSMenuExtra API is
+   undocumented, and subject to change by Apple whenever deemed necessary,
+   it is best to avoid using the API in your applications.
+
+   The rest of this article will lead you through developing your own
+   NSStatusItem menulet including displaying text or an icon in the view,
+   making a drop-menu and setting up automatic updating.
+
+                            Creating the Menulet
+
+   The first thing to do is create a new XCode project for building this
+   tutorial. Alternatively, you could add these files and resources to an
+   already existing application. Menulets must belong to an application
+   since the status bar will not retain and update your menulet for you.
+   Therefore, for purposes of illustration and testing we will be creating
+   a new, stand-alone application for controlling our menulet.
+
+   The example menulet will display the user's external IP address in the
+   menu bar. The external IP address is obtained by querying a remote
+   server and then setting the text in the menubar to the external IP
+   address.
+
+   In XCode select New Project... and choose to create a Cocoa
+   Application. After the new project is created, right click on the
+   Classes folder and choose Add > New File... You will be adding an
+   'Objective-C class', and name it "IPMenulet.m". Make sure to leave
+   'Also create IPMenulet.h' checked.
+
+   The application will need to hold a reference to the NSStatusItem, as
+   well as initialize the menulet, add it to the system status bar, and
+   update data in the menulet. Add the following code to the IPMenulet.h
+   and IPMenulet.m files you created in your project.
+
+   IPMenulet.h
+@interface IPMenulet : NSObject {
+    NSStatusItem *statusItem;
+}
+
+-(IBAction)updateIPAddress:(id)sender;
+
+   IPMenulet.m
+-(void)dealloc
+{
+    [statusItem release];
+      [super dealloc];
+}
+- (void)awakeFromNib
+{
+   statusItem = [[[NSStatusBar systemStatusBar]
+      statusItemWithLength:NSVariableStatusItemLength]
+      retain];
+   [statusItem setHighlightMode:YES];
+   [statusItem setTitle:[NSString
+         stringWithString:@"0.0.0.0"]];
+   [statusItem setEnabled:YES];
+   [statusItem setToolTip:@"IPMenulet"];
+
+   [statusItem setAction:@selector(updateIPAddress:)];
+   [statusItem setTarget:self];
+}
+
+   The code above creates and attaches a new NSStatusItem of variable
+   length to the system status bar. Since the status item is variable
+   length, the area will grow and shrink depending on the content of the
+   status item's title or icon. Alternatively, you could set the length
+   via the statusItemWithLength: method to NSSquareStatusItemLength, which
+   would fix the width of the status item to the height of the status bar
+   (currently always 22 pixels high).
+
+   The parameter highlightMode specifies if a box is drawn around the
+   menulet when clicked, and enabled determines if the menulet is grayed
+   out or darkened. Since we don't yet know our IP address, we will set
+   the initial display to 0.0.0.0, and the tooltip is what is displayed
+   when a user hovers their mouse over the menulet.
+
+   At the end of the initialization code there are the setAction: and
+   setTarget: functions. Similar to other applications, these functions
+   set the functions that should be called when a user clicks on the
+   menulet. In this example, we will be updating the IP address whenever
+   the user clicks on the menubar. It is also possible to set the
+   double-click action if desired.
+
+   We now need to implement the updateIPAddress: method.
+
+   IPMenulet.m
+-(IBAction)updateIPAddress:(id)sender
+{
+   NSString *ipAddr = [NSString stringWithContentsOfURL:
+         [NSURL URLWithString:
+         @"http://highearthorbit.com/service/myip.php"]];
+   if(ipAddr != NULL)
+       [statusItem setTitle:
+            [NSString stringWithString:ipAddr]];
+}
+
+   The updateIPAddress: function gets the IP address as a string from an
+   external server query and then sets the title of the NSStatusItem.
+
+   Building the NIB Interface
+
+   We now have all of the code that we need . However, when the
+   application starts, it needs to know to create the menulet. Therefore,
+   we will create an instantiation of the menulet in the NIB file that is
+   loaded. This will allow us to later add more code and hooks to our
+   menulet for controlling menu items.
+
+   To create the menulet double-click the MainMenu.nib in the Resources
+   folder of the project. After it loads, click the "Classes" tab, then
+   choose "Classes" in the menubar, "Read Files...", navigate to
+   IPMenulet.h and "Parse".
+
+    Figure 2: Parsing IPMenulet.h into Interface Builder allows it to be
+                  instantiated as part of the application.
+
+   This parsing loads the IPMenulet interface into Interface Builder. We
+   still need an instance of the class to use in our application.
+   Right-click "IPMenulet" in the pane view and click "Instantiate
+   IPMenulet". This will place a blue-cube and IPMenulet instance in our
+   Interface Builder window.
+
+   At this point we don't want a main application window to pop-up at
+   startup, so click the Window icon and delete it. Then save the nib
+   file, return to XCode and choose the "Build and Go".
+
+   Depending on how many menulets you already had in your status bar you
+   may have to click outside of XCode since XCode has a large number of
+   menubar items. You should see 0.0.0.0. Click on the menulet and after a
+   short pause you should see an updated IP address.
+
+   Removing the Dock Icon
+
+   If you are making a menulet-only application, having a dock icon seems
+   like an unnecessary item. It is possible to have an application 'hide'
+   its dock icon by specifying a new value in the "Info.plist" file in
+   your XCode project. At the end of the list, just before, the </dict>,
+   add the following key and value:
+   <key>LSUIElement</key>
+   <string>1</string>
+
+   Now when your menulet application starts up, it doesn't have a dock
+   icon. Be careful however, as you currently have no easy means to quit
+   your menulet application either. While developing, it is possible to
+   quit the application by pressing the "Stop" icon in XCode.
+
+                            Using a Menulet Icon
+
+   You now have a fully functional menulet application that takes up a lot
+   of valuable menubar space. For some menulets, it may be best to use an
+   icon that the user will click for more information, or an icon that
+   changes depending on the state of some application variable or other
+   data source.
+
+   Unicode Glyphs
+
+   The simplest way to add an iconic view to the menulet is by using a
+   Unicode character for the title. This has several benefits, such as not
+   requiring the design, creating, and loading of an image. Also, when a
+   user clicks on a menulet and it becomes highlighted, the icon should
+   have an 'inverse' view that inverts the colors of the icon in some way
+   to alert the user that the menulet has been clicked. The title of a
+   status item, and therefore a symbolic glyph, is automatically inverted.
+
+   Finding a good glyph (symbol) is a bit tricky. In the end, we need the
+   hex value for a Unicode character. Mac OS X provides a very nice tool
+   for looking at Unicode characters, though it is a bit buried.
+
+   Go to System Preferences, International and check Character Palette.
+   After you do this you will see your current input language flag in the
+   menubar (look, another menulet!). Click on the flag and choose Show
+   Character Palette. The character palette window pane will pop-up and
+   sit above all of your other windows. At the top of the pane, there is
+   View: and a drop menu. Click on the drop menu and choose Code Tables.
+   You can now navigate through all of the Unicode characters. When you
+   find a glyph that you want to use, click on it and then get the
+   Unicode: value next to the zoomed in view of the character.
+
+      Figure 3: The Character Palette is a very useful tool for finding
+               glyphs and their associated Unicode hex values.
+
+   Now armed with a Unicode value, return to the IPMenulet.m file and
+   replace the
+[statusItem setTitle:[NSString
+   stringWithString:@"0.0.0.0"]];
+
+   with a formatted string using one (or many) hex values the formatter is
+   %C. Therefore, the following code will produce the ??symbol:
+[statusItem setTitle:[NSString
+   stringWithFormat:@"%C",0x2295]];
+
+   Image Icons
+
+   While using a built in glyph is very simple, it does not offer the
+   flexibility an icon provides. The NSStatusItem API provides the
+   setImage:(NSImage*) function to set the icon. The following code
+   obtains a 22x22 pixel image that has been added to the project
+   resources, which is then stored and set to the status items image. You
+   can use any small icon in your project that you want. For purposes of
+   this example, the icon is "IPMenuIcon.tif".
+
+   First, add a pointer to an NSImage to the data members of the IPMenulet
+   class.
+
+   IPMenulet.h
+NSImage *menuIcon;
+
+   Then we need to get the bundle, the path, and finally the image at this
+   path. We will store this image for future reference if we want to show
+   or hide the icon depending on the menulet's state. We also set the
+   title to an empty string although it is allowed to have both an image
+   and text in the status item. Make sure to release the icon when the
+   application quits.
+
+   IPMenulet.m (awakeFromNib:)
+NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+NSString *path = [bundle pathForResource:@"IPMenuIcon" ofType:@"tif"];
+menuIcon= [[NSImage alloc] initWithContentsOfFile:path];
+
+[statusItem setTitle:[NSString stringWithString:@""]];
+
+[statusItem setImage:menuIcon];
+
+(dealloc:)
+[menuIcon release];
+
+   Test this new version. You should see the icon in the header. When the
+   icon is clicked, the IP address is filled in to the right of the icon
+   as shown in Figure 4.
+
+           Figure 4: The Menulet with both an icon and text title.
+
+                                Adding a Menu
+
+   The menulet has shaped up rather nicely, but is limited to a single
+   line of information and a single action when clicking. It is possible
+   to extend the menulet by adding a menu to provide more information and
+   interaction with user such as bringing up "About" boxes,
+   "Preferences...", or displaying the IP address in the menu and keeping
+   the menulet itself to a single icon.
+
+   First we will modify our code to include the pointer to the menu and a
+   menu item we will be creating by adding the following to the IPMenulet
+   interface definition.
+
+   IPMenulet.h
+IBOutlet NSMenu *theMenu;
+NSMenuItem *ipMenuItem;
+
+   Now we need to build the actual menu. Double-click the MainMenu.nib
+   file to bring up Interface Builder. The first thing to do is to update
+   Interface Builder's knowledge of the IPMenulet class. We need to double
+   click the IPMenulet instantiation, right-click and choose "Read
+   IPMenulet.h". After this is complete, return to the "Instances" tab.
+
+   Choose the "Cocoa-Menus" tab from the Interface Builder palette. Drag
+   and drop the menu icon in the lower-right corner to the MainMenu.nib
+   panel. This will add an NSMenu1 item to our nib file. Rename the first
+   item "External IP" and delete the second menu item.
+
+   Next we connect the menu to our class. Control left-click and drag from
+   the IPMenulet instantiation to the new NSMenu1 and connect theMenu data
+   member of the class.
+
+   We assigned the menu to the class, but now the menu now needs to be
+   assigned to IPMenulet. Return to XCode and modify the IPMenulet.m file
+   to use theMenu instead of calling the updateIPAddress: selector. We're
+   also going to dynamically create a menu item that is the external IP
+   address and set it to update the IP address when the user clicks it.
+
+   IPMenulet.m (awakeFromNib:)
+[statusItem setMenu:theMenu];
+ipMenuItem = [[NSMenuItem alloc] initWithTitle:@"0.0.0.0"
+      action:@selector(updateIPAddress:) keyEquivalent:@""];
+[ipMenuItem setTarget:self];
+[theMenu insertItem:ipMenuItem atIndex:1];
+
+   The menulet will know to call and expand the menu on a user click.
+   Therefore, comment out:
+//  [statusItem setAction:@selector(updateIPAddress:)];
+//  [statusItem setTarget:self];
+
+   We also want to update the IP address menu item with the new IP
+   address. This is a simple change, instead of setting the title of the
+   statusItem, we want to change the title of the ipMenuItem.
+
+   IPMenulet.m (updateIPAddres:)
+[statusItem setTitle:[NSString stringWithString:ipAddr]];
+
+   becomes:
+[ipMenuItem setTitle:[NSString stringWithString:ipAddr]];
+
+   Click "Build and Go" again to see the newest results. You will only see
+   the icon in the menubar. Click on this to expand down your new menu.
+   Click on the IP Address to have it update and change the menu item.
+
+                Figure 5: The menulet with a drop-down menu.
+
+                             Automatic Updating
+
+   To this point we have made a menulet that has either an icon or text in
+   the status bar, and updates the IP address when the user interacts with
+   the menu item. By contrast, most menulets provide the user information
+   without requiring interaction from the user. Therefore, it is often
+   useful to use a timer to automatically update the menulet. This allows
+   the menulet to provide up to date information without requiring
+   constant interaction from a user.
+
+   This example hardcodes the timer interval to a predetermined value that
+   seems adequate for the task, 1000 seconds. However, it would be useful
+   for more advanced menulets to include a preference pane or selectable
+   menu items for setting a variable update rate.
+
+   Add the following sections of code to your source files:
+
+   IPMenulet.h
+NSTimer *updateTimer;
+
+IPMenulet.m (awakeFromNib:)
+
+updateTimer = [[NSTimer
+               scheduledTimerWithTimeInterval:(1000.0)
+               target:self
+               selector:@selector(updateIPAddress:)
+               userInfo:nil
+               repeats:YES] retain];
+[updateTimer fire];
+
+(dealloc:)
+[updateTimer release];
+
+   The timer is built with 1000 second delay, and when it 'fires' (timer
+   runs out), it will call our updateIPAddress: selector. The timer will
+   continue firing for as long as the application remains active (repeats
+   is set to YES).
+
+   Build and run the updated application. The IP address will be updated
+   immediately upon startup. It will then be updated every 1000 seconds.
+   If you want to double-check your timer, change the timer interval to
+   10.0, and add
+[statusItem setTitle:[NSString
+      stringWithString:@"Updating"]];
+
+   to the beginning of the updateIPAddress: function. At the end of the
+   function, add:
+[statusItem setTitle:[NSString
+      stringWithString:@""]];
+
+   These additions will cause the menu to print "Updating" in the menu bar
+   while retrieving the external IP address.
+
+                                 Conclusions
+
+   You've now successfully developed several iterations of a Mac OS X
+   menulet. Each variation has different uses, depending on the desired
+   information to be displayed, and user interaction required.
+   Furthermore, menulets as described here can be made either stand-alone
+   or as part of a larger application. In a larger application, the
+   menulet's selectors and menu items would be connected to the
+   application's code and data. This type of interface provides users with
+   a potentially useful resource for quickly gleaning information from
+   your application.
+
+   Menulets also provide an interface for drawing to an NSView. This
+   capability allows a developer limitless freedom in drawing icons,
+   graphs, blinken-lights, or anything else in their menulet.
+
+   For more information on the NSStatusItem API, check out the Apple
+   developer documentation:
+
+   developer.apple.com/documentation/Cocoa/Reference/
+   ApplicationKit/ObjC_classic/Classes/NSStatusItem.html
+     __________________________________________________________________
+
+   Andrew Turner is a Systems Development Engineer with Realtime
+   Technologies, Inc (www.simcreator.com) and has built robotic airships,
+   automated his house, designed spacecraft, and in general looks for any
+   excuse to hack together cool technology. You can read more about his
+   projects at www.highearthorbit.com.
+
+
