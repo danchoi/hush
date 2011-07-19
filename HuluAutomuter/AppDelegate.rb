@@ -23,9 +23,11 @@ class AppDelegate
     `mkdir #{ENV['HOME']}/.automuter`
     `rm #{ENV['HOME']}/.automuter/automuter.log`
     `touch #{ENV['HOME']}/.automuter/automuter.log`
-    #cmd = "#{automuter_path} > #{ENV['HOME']}/.automuter/automuter.log 2>&1 &"
-    #puts cmd
-    #`#{cmd}`
+    cmd = "#{automuter_path} > #{ENV['HOME']}/.automuter/automuter.log 2>&1 &"
+    puts cmd
+    puts `#{cmd}`
+    return
+
     self.task = NSTask.alloc.init
     @log_path = "#{ENV['HOME']}/.automuter/automuter.log"
     @output = NSFileHandle.fileHandleForWritingAtPath @log_path
@@ -35,9 +37,10 @@ class AppDelegate
     puts @output.class
     task.setLaunchPath automuter_path
     task.setStandardOutput @output
-    task.setStandardError @output
+    #task.setStandardError @output
     task.launch
     @pid = task.processIdentifier
+    puts task.standardOutput
     puts "PID: #{@pid}"
   end
 

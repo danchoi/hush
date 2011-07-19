@@ -7,6 +7,9 @@ require 'webrick/httpproxy'
 
 port = 8123
 
+pid = Process.pid
+`ps aux | grep ruby | grep automuter-osx | awk '{print $2}' | grep -v #{pid} | xargs kill -INT`
+
 module HuluControl
   class OSX
     def initialize
