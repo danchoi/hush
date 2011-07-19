@@ -37,11 +37,13 @@ class AppDelegate
     status_item.setTarget self
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
-    task = NSTask.alloc.init
+    self.task = NSTask.alloc.init
     task.setLaunchPath automuter_path
     task.standardOutput = NSFileHandle.fileHandleWithStandardOutput
     task.standardError = NSFileHandle.fileHandleWithStandardError
     puts task.launch
+    @pid = task.processIdentifier
+    puts "Process #@pid"
   end
 
   def statusClicked(sender)
@@ -49,7 +51,8 @@ class AppDelegate
   end
 
   def applicationWillTerminate(application)
-    `kill -INT #{@pid}`
+    self.task.interrupt
+    self.task.waitUntilExit
     unconfig_proxy
   end
 end
