@@ -16,6 +16,7 @@
 		DE36108313D15045001DD3B1 /* AppDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = DE36108213D15045001DD3B1 /* AppDelegate.rb */; };
 		DEEACEFF13D5136B00B91CF3 /* automuter.pac in Resources */ = {isa = PBXBuildFile; fileRef = DEEACEFE13D5136B00B91CF3 /* automuter.pac */; };
 		DEEACF0213D5175700B91CF3 /* automuter-osx in Resources */ = {isa = PBXBuildFile; fileRef = DEEACF0113D5175700B91CF3 /* automuter-osx */; };
+		DEEACF0413D5433100B91CF3 /* automuter_off.pac in Resources */ = {isa = PBXBuildFile; fileRef = DEEACF0313D5433100B91CF3 /* automuter_off.pac */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DE36108213D15045001DD3B1 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = AppDelegate.rb; sourceTree = "<group>"; };
 		DEEACEFE13D5136B00B91CF3 /* automuter.pac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = automuter.pac; sourceTree = SOURCE_ROOT; };
 		DEEACF0113D5175700B91CF3 /* automuter-osx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "automuter-osx"; sourceTree = SOURCE_ROOT; };
+		DEEACF0313D5433100B91CF3 /* automuter_off.pac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = automuter_off.pac; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		DE36107213D15045001DD3B1 /* HuluAutomuter */ = {
 			isa = PBXGroup;
 			children = (
+				DEEACF0313D5433100B91CF3 /* automuter_off.pac */,
 				DEEACF0113D5175700B91CF3 /* automuter-osx */,
 				DEEACEFE13D5136B00B91CF3 /* automuter.pac */,
 				DE36108213D15045001DD3B1 /* AppDelegate.rb */,
@@ -182,6 +185,7 @@
 				DE36108313D15045001DD3B1 /* AppDelegate.rb in Resources */,
 				DEEACEFF13D5136B00B91CF3 /* automuter.pac in Resources */,
 				DEEACF0213D5175700B91CF3 /* automuter-osx in Resources */,
+				DEEACF0413D5433100B91CF3 /* automuter_off.pac in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,7 +81,6 @@ end
 
 trap("INT"){
   s.shutdown
-  unconfig_proxy
   exit
 }
 
@@ -90,7 +89,6 @@ puts "Please remember to configure your web browser to use this HTTP proxy"
 puts "Press CTRL-C to stop"
 
 puts "Setting up http proxy"
-config_proxy
 
 s.start
 

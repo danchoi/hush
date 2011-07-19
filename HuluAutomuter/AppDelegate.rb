@@ -9,6 +9,25 @@
 
 class AppDelegate
   attr_accessor :window, :status_item, :task, :file
+
+
+  def config_proxy
+    path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
+    path = "file://localhost" + path
+    cmd = "networksetup -setautoproxyurl AirPort #{path}"
+    puts cmd
+    `#{cmd}`
+  end
+
+  def unconfig_proxy
+    path = NSBundle.mainBundle.pathForResource("automuter_off", ofType:"pac")
+    path = "file://localhost" + path
+    cmd = "networksetup -setautoproxyurl AirPort #{path}"
+    #cmd = "networksetup -setwebproxystate AirPort off"
+    puts cmd
+   `#{cmd}`
+  end
+
   def applicationDidFinishLaunching(a_notification)
       # Insert code here to initialize your application
     self.status_item = NSStatusBar.systemStatusBar.
@@ -20,6 +39,7 @@ class AppDelegate
     status_item.setAction :'statusClicked:'
     status_item.setTarget self
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
+    config_proxy
     `mkdir #{ENV['HOME']}/.automuter`
     `rm #{ENV['HOME']}/.automuter/automuter.log`
     `touch #{ENV['HOME']}/.automuter/automuter.log`
