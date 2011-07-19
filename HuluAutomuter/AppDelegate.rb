@@ -15,6 +15,9 @@ class AppDelegate
   def config_proxy
     path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
     path = "file://localhost" + path
+    u = NSBundle.mainBundle.URLForResource("automuter", withExtension:"pac")
+    puts path
+    puts "URL: #{u}"
     run "networksetup -setautoproxyurl AirPort #{path}"
     run "networksetup -setautoproxyurl Ethernet #{path}"
   end
@@ -25,7 +28,6 @@ class AppDelegate
     run "networksetup -setautoproxyurl AirPort #{path}"
     run "networksetup -setautoproxyurl Ethernet #{path}"
   end
-
 
   def applicationDidFinishLaunching(a_notification)
       # Insert code here to initialize your application
@@ -39,10 +41,14 @@ class AppDelegate
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
     `mkdir #{ENV['HOME']}/.automuter`
-    @logfile = "#{ENV['HOME']}/.automuter/automuter.log"
-    cmd = "#{automuter_path} >> #{@logfile} 2>&1"
-    puts cmd
-    puts `#{cmd}`
+    @logfile = "#{ENV['HOME']}/.automuter/hulu.log"
+    # & doesn't work
+    #run "#{automuter_path} >> #{@logfile} 2>&1 &"
+    task = NSTask.alloc.init
+    task.setLaunchPath automuter_path
+    task.standardOutput = NSFileHandle.fileHandleWithStandardOutput
+    task.standardError = NSFileHandle.fileHandleWithStandardError
+    puts task.launch
   end
 
   def statusClicked(sender)

@@ -77,9 +77,7 @@
 		DE36107213D15045001DD3B1 /* HuluAutomuter */ = {
 			isa = PBXGroup;
 			children = (
-				DEEACF0313D5433100B91CF3 /* automuter_off.pac */,
 				DEEACF0113D5175700B91CF3 /* automuter-osx */,
-				DEEACEFE13D5136B00B91CF3 /* automuter.pac */,
 				DE36108213D15045001DD3B1 /* AppDelegate.rb */,
 				DE36107B13D15045001DD3B1 /* Resources */,
 				DE36107F13D15045001DD3B1 /* Other Sources */,
@@ -102,6 +100,8 @@
 		DE36107B13D15045001DD3B1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEEACEFE13D5136B00B91CF3 /* automuter.pac */,
+				DEEACF0313D5433100B91CF3 /* automuter_off.pac */,
 				DE36107C13D15045001DD3B1 /* MainMenu.xib */,
 			);
 			name = Resources;
