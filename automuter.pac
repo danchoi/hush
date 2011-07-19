@@ -1,6 +1,6 @@
  function FindProxyForURL(url, host) {
   // our local URLs from the domains below example.com don't need a proxy:
-  if (shExpMatch(host, "*.hulu.com"))
+  if (shExpMatch(host, "t2.hulu.com"))
   {
     return "PROXY localhost:8123";
   }

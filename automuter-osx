@@ -79,10 +79,12 @@ end
 trap("INT"){
   s.shutdown
   unconfig_proxy
+  exit
 }
 trap("SIGTERM"){
   s.shutdown
   unconfig_proxy
+  exit
 }
 
 puts "HuluAutomuter is starting on port #{port}"
