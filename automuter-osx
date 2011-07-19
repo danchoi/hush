@@ -54,14 +54,24 @@ rescue
   raise
 end
 
+def pac_path
+  "file://localhost" + File.expand_path(File.dirname(__FILE__), 'automuter.pac')
+end
+
+def passthrough_pac_path
+  "file://localhost" + File.expand_path(File.dirname(__FILE__), 'automuter_off.pac')
+end
+
 def config_proxy
-  cmd = "networksetup -setwebproxy AirPort 127.0.0.1 8123"
+  cmd = "networksetup -setautoproxyurl AirPort #{pac_path}"
+  #cmd = "networksetup -setwebproxy AirPort 127.0.0.1 8123"
   puts cmd
   `#{cmd}`
 end
 
 def unconfig_proxy
- cmd = "networksetup -setwebproxystate AirPort off"
+  cmd = "networksetup -setautoproxyurl AirPort #{passthrough_pac_path}"
+  #cmd = "networksetup -setwebproxystate AirPort off"
   puts cmd
  `#{cmd}`
 end
@@ -88,9 +98,7 @@ puts "Done"
 
 
 __END__
- #cmd = "networksetup -setautoproxyurl AirPort off"
 # pac_path = File.expand_path(File.dirname(__FILE__), 'automuter.pac')
-cmd = "networksetup -setautoproxyurl AirPort #{pac_path}"
 #`networksetup -setwebproxy AirPort 127.0.0.1 8123`
 #`networksetup -setwebproxystate AirPort on`
 
