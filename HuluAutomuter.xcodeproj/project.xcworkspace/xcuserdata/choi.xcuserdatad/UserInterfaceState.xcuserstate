@@ -1491,7 +1491,7 @@
 				</dict>
 			</array>
 		</dict>
-		<integer>490</integer>
+		<integer>56</integer>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -1561,7 +1561,7 @@
 			</array>
 		</dict>
 		<integer>29</integer>
-		<string>Menu Item - Help</string>
+		<string>Menu Item - HuluAutomuter</string>
 		<string>Xcode.IDEKit.CocoaIntegration.EditorDocument.Cocoa</string>
 		<dict>
 			<key>$class</key>
@@ -2282,7 +2282,7 @@
 				</dict>
 			</array>
 		</dict>
-		<integer>490</integer>
+		<integer>56</integer>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -2570,7 +2570,7 @@
 			</dict>
 		</dict>
 		<string>file://localhost/Users/choi/projects/hulu-osx/HuluAutomuter/HuluAutomuter.xcodeproj/</string>
-		<real>332769811.82470298</real>
+		<real>332770015.03735203</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6157,7 +6157,7 @@
 				<integer>453</integer>
 			</dict>
 		</dict>
-		<real>332769811.828345</real>
+		<real>332770015.04255497</real>
 		<dict>
 			<key>$class</key>
 			<dict>
