@@ -5,21 +5,25 @@
 class AppDelegate
   attr_accessor :window, :status_item, :task, :file
 
+  VERSION = '0.0.1'
+
+  def run(cmd)
+    puts cmd
+    `#{cmd}`
+  end
+
   def config_proxy
     path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
     path = "file://localhost" + path
-    cmd = "networksetup -setautoproxyurl AirPort #{path}"
-    puts cmd
-    `#{cmd}`
+    run "networksetup -setautoproxyurl AirPort #{path}"
+    run "networksetup -setautoproxyurl Ethernet #{path}"
   end
 
   def unconfig_proxy
     path = NSBundle.mainBundle.pathForResource("automuter_off", ofType:"pac")
     path = "file://localhost" + path
-    cmd = "networksetup -setautoproxyurl AirPort #{path}"
-    #cmd = "networksetup -setwebproxystate AirPort off"
-    puts cmd
-   `#{cmd}`
+    run "networksetup -setautoproxyurl AirPort #{path}"
+    run "networksetup -setautoproxyurl Ethernet #{path}"
   end
 
   LOGFILE = `#{ENV['HOME']}/.automuter/automuter.log`

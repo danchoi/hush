@@ -65,22 +65,27 @@ def passthrough_pac_path
   "file://localhost" + File.expand_path(File.dirname(__FILE__), 'automuter_off.pac')
 end
 
-def config_proxy
-  cmd = "networksetup -setautoproxyurl AirPort #{pac_path}"
-  #cmd = "networksetup -setwebproxy AirPort 127.0.0.1 8123"
+def run(cmd)
   puts cmd
   `#{cmd}`
 end
 
-def unconfig_proxy
-  cmd = "networksetup -setautoproxyurl AirPort #{passthrough_pac_path}"
-  #cmd = "networksetup -setwebproxystate AirPort off"
-  puts cmd
- `#{cmd}`
+def config_proxy
+  run "networksetup -setautoproxyurl AirPort #{pac_path}"
+  run "networksetup -setautoproxyurl Ethernet #{pac_path}"
 end
 
+def unconfig_proxy
+  run "networksetup -setautoproxyurl AirPort #{passthrough_pac_path}"
+  run "networksetup -setautoproxyurl Ethernet #{passthrough_pac_path}"
+end
+
+  
 trap("INT"){
   s.shutdown
+  if $stdout.tty?
+    unconfig_proxy
+  end
   exit
 }
 
@@ -88,8 +93,10 @@ puts "HuluAutomuter is starting on port #{port}"
 puts "Please remember to configure your web browser to use this HTTP proxy"
 puts "Press CTRL-C to stop"
 
-puts "Setting up http proxy"
-
+if $stdout.tty?
+  puts "Setting up http proxy"
+  config_proxy
+end
 s.start
 
 puts "Done"
