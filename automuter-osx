@@ -1,0 +1,96 @@
+#!/usr/bin/env ruby
+# Hulu Automuter
+# by Daniel Choi <dhchoi@gmail.com>
+# License: MIT License (c) 2011 Daniel Choi
+
+require 'webrick/httpproxy'
+
+port = 8123
+
+module HuluControl
+  class OSX
+    def initialize
+      @last_volume = 70
+    end
+
+    def mute
+      vol = `osascript -e "get output volume of (get volume settings)"`.strip.to_i
+      if vol > 0
+        @last_volume = vol
+        puts "Remember last volume: #{@last_volume}"
+      end
+      %Q|osascript -e "set Volume output volume 0"|
+    end
+
+    def unmute
+      %Q|osascript -e "set Volume output volume #{@last_volume}"|
+    end
+  end
+end
+hc = HuluControl::OSX.new
+
+proxyproc = Proc.new{|req,res| 
+  if req.host !~ /hulu\.com/
+    next
+  end
+  r = req.path
+  if r =~ /adload/ 
+    $stdout.puts ["ad loaded", hc.mute].join(', ')
+    `#{hc.mute}`
+  elsif r =~ /contentplaybackresume/
+    $stdout.puts ["content resuming", hc.unmute].join(', ')
+    `#{hc.unmute}`
+  end
+  nil
+}
+
+#$stderr = File.open('/dev/null', 'w')
+#$stderr = File.open('/Users/choi/automuter_osx.log', 'a')
+
+begin
+  s = WEBrick::HTTPProxyServer.new(:Port => port, :BindAddress => '0.0.0.0', :RequestCallback => proxyproc)
+rescue 
+  $stderr = STDERR
+  raise
+end
+
+def config_proxy
+  cmd = "networksetup -setwebproxy AirPort 127.0.0.1 8123"
+  puts cmd
+  `#{cmd}`
+end
+
+def unconfig_proxy
+ cmd = "networksetup -setwebproxystate AirPort off"
+  puts cmd
+ `#{cmd}`
+end
+
+trap("INT"){
+  s.shutdown
+  unconfig_proxy
+}
+trap("SIGTERM"){
+  s.shutdown
+  unconfig_proxy
+}
+
+puts "HuluAutomuter is starting on port #{port}"
+puts "Please remember to configure your web browser to use this HTTP proxy"
+puts "Press CTRL-C to stop"
+
+puts "Setting up http proxy"
+config_proxy
+
+s.start
+
+puts "Done"
+
+
+__END__
+ #cmd = "networksetup -setautoproxyurl AirPort off"
+# pac_path = File.expand_path(File.dirname(__FILE__), 'automuter.pac')
+cmd = "networksetup -setautoproxyurl AirPort #{pac_path}"
+#`networksetup -setwebproxy AirPort 127.0.0.1 8123`
+#`networksetup -setwebproxystate AirPort on`
+
