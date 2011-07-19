@@ -13,6 +13,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DE36106813D15045001DD3B1"
+               BuildableName = "Hush.app"
+               BlueprintName = "Hush"
+               ReferencedContainer = "container:HuluAutomuter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "DE36107113D15045001DD3B1"
                BuildableName = "Deployment"
                BlueprintName = "Deployment"
