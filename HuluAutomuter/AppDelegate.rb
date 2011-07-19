@@ -15,9 +15,6 @@ class AppDelegate
   def config_proxy
     path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
     path = "file://localhost" + path
-    u = NSBundle.mainBundle.URLForResource("automuter", withExtension:"pac")
-    puts path
-    puts "URL: #{u}"
     run "networksetup -setautoproxyurl AirPort #{path}"
     run "networksetup -setautoproxyurl Ethernet #{path}"
   end
