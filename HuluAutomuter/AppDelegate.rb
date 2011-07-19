@@ -1,15 +1,9 @@
-#
-#  AppDelegate.rb
 #  HuluAutomuter
-#
 #  Created by Daniel Choi on 7/16/11.
-#  Copyright 2011 __MyCompanyName__. All rights reserved.
-#
-
+#  License: MIT License (c) 2011 Daniel Choi
 
 class AppDelegate
   attr_accessor :window, :status_item, :task, :file
-
 
   def config_proxy
     path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
