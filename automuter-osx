@@ -47,9 +47,6 @@ proxyproc = Proc.new{|req,res|
   nil
 }
 
-#$stderr = File.open('/dev/null', 'w')
-#$stderr = File.open('/Users/choi/automuter_osx.log', 'a')
-
 begin
   s = WEBrick::HTTPProxyServer.new(:Port => port, :BindAddress => '0.0.0.0', :RequestCallback => proxyproc)
 rescue 
