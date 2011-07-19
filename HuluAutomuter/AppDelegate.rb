@@ -26,7 +26,7 @@ class AppDelegate
     run "networksetup -setautoproxyurl Ethernet #{path}"
   end
 
-  LOGFILE = `#{ENV['HOME']}/.automuter/automuter.log`
+
   def applicationDidFinishLaunching(a_notification)
       # Insert code here to initialize your application
     self.status_item = NSStatusBar.systemStatusBar.statusItemWithLength NSVariableStatusItemLength
@@ -39,7 +39,8 @@ class AppDelegate
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
     `mkdir #{ENV['HOME']}/.automuter`
-    cmd = "#{automuter_path} >> #{LOGFILE}"
+    @logfile = "#{ENV['HOME']}/.automuter/automuter.log"
+    cmd = "#{automuter_path} >> #{@logfile} 2>&1"
     puts cmd
     puts `#{cmd}`
   end

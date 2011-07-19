@@ -89,7 +89,7 @@ trap("INT"){
   exit
 }
 
-puts "HuluAutomuter is starting on port #{port}"
+puts "HuluAutomuter is starting on port #{port} at #{Time.now}"
 puts "Please remember to configure your web browser to use this HTTP proxy"
 puts "Press CTRL-C to stop"
 
