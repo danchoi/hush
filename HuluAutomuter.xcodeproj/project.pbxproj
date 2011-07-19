@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DE36106913D15045001DD3B1 /* HuluAutomuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuluAutomuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE36106913D15045001DD3B1 /* Hush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE36106D13D15045001DD3B1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DE36106F13D15045001DD3B1 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = System/Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
 		DE36107413D15045001DD3B1 /* HuluAutomuter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HuluAutomuter-Info.plist"; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		DE36106A13D15045001DD3B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE36106913D15045001DD3B1 /* HuluAutomuter.app */,
+				DE36106913D15045001DD3B1 /* Hush.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,9 +146,9 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		DE36106813D15045001DD3B1 /* HuluAutomuter */ = {
+		DE36106813D15045001DD3B1 /* Hush */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE36108613D15045001DD3B1 /* Build configuration list for PBXNativeTarget "HuluAutomuter" */;
+			buildConfigurationList = DE36108613D15045001DD3B1 /* Build configuration list for PBXNativeTarget "Hush" */;
 			buildPhases = (
 				DE36106513D15045001DD3B1 /* Sources */,
 				DE36106613D15045001DD3B1 /* Frameworks */,
@@ -158,9 +158,9 @@
 			);
 			dependencies = (
 			);
-			name = HuluAutomuter;
+			name = Hush;
 			productName = HuluAutomuter;
-			productReference = DE36106913D15045001DD3B1 /* HuluAutomuter.app */;
+			productReference = DE36106913D15045001DD3B1 /* Hush.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -180,7 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE36106813D15045001DD3B1 /* HuluAutomuter */,
+				DE36106813D15045001DD3B1 /* Hush */,
 				DE36107113D15045001DD3B1 /* Deployment */,
 			);
 		};
@@ -281,7 +281,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HuluAutomuter/HuluAutomuter-Prefix.pch";
 				INFOPLIST_FILE = "HuluAutomuter/HuluAutomuter-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Hush;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -297,7 +297,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HuluAutomuter/HuluAutomuter-Prefix.pch";
 				INFOPLIST_FILE = "HuluAutomuter/HuluAutomuter-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Hush;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -326,7 +326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DE36108613D15045001DD3B1 /* Build configuration list for PBXNativeTarget "HuluAutomuter" */ = {
+		DE36108613D15045001DD3B1 /* Build configuration list for PBXNativeTarget "Hush" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE36108713D15045001DD3B1 /* Debug */,
