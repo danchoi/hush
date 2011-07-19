@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DE36106813D15045001DD3B1"
-               BuildableName = "HuluAutomuter.app"
+               BuildableName = "Hush.app"
                BlueprintName = "Hush"
                ReferencedContainer = "container:HuluAutomuter.xcodeproj">
             </BuildableReference>
@@ -41,7 +41,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE36106813D15045001DD3B1"
-            BuildableName = "HuluAutomuter.app"
+            BuildableName = "Hush.app"
             BlueprintName = "Hush"
             ReferencedContainer = "container:HuluAutomuter.xcodeproj">
          </BuildableReference>
@@ -60,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE36106813D15045001DD3B1"
-            BuildableName = "HuluAutomuter.app"
+            BuildableName = "Hush.app"
             BlueprintName = "Hush"
             ReferencedContainer = "container:HuluAutomuter.xcodeproj">
          </BuildableReference>
