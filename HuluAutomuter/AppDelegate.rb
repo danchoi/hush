@@ -27,10 +27,12 @@ class AppDelegate
   end
 
   def muted
+    puts "muting icon"
     status_item.image = @mute_icon
   end
 
   def unmuted
+    puts "unmuting icon"
     status_item.image = @unmute_icon
   end
 
@@ -73,9 +75,10 @@ class AppDelegate
     if data.length
       string = NSString.alloc.initWithData data, encoding: NSUTF8StringEncoding
       puts "PIPE STRING: #{string}"
-      if string =~ /\[ad loaded\]/
+      puts "END PIPE STRING"
+      if string =~ /\[ad loaded\]/m
         self.muted
-      elsif string =~ /\[content resuming\]/
+      elsif string =~ /\[content resuming\]/m
         self.unmuted
       end
       notification.object.readInBackgroundAndNotify
