@@ -64,6 +64,7 @@ class AppDelegate
 
   def applicationWillTerminate(application)
     `kill -INT #{@pid}`
+    unconfig_proxy
   end
 end
 
