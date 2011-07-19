@@ -40,10 +40,6 @@ class AppDelegate
     status_item.setTarget self
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
-    `mkdir #{ENV['HOME']}/.automuter`
-    @logfile = "#{ENV['HOME']}/.automuter/hulu.log"
-    # & doesn't work
-    #run "#{automuter_path} >> #{@logfile} 2>&1 &"
     task = NSTask.alloc.init
     task.setLaunchPath automuter_path
     task.standardOutput = NSFileHandle.fileHandleWithStandardOutput
