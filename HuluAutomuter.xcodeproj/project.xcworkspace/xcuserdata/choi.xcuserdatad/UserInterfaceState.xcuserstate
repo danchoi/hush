@@ -468,7 +468,7 @@
 			</dict>
 		</dict>
 		<string>file://localhost/Users/choi/projects/hulu-osx/HuluAutomuter/HuluAutomuter.xcodeproj/</string>
-		<real>332743640.27846497</real>
+		<real>332745218.61685097</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -662,7 +662,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>332743640.27837598</real>
+		<real>332745218.616763</real>
 		<string>{0, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -801,7 +801,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>53</integer>
+					<integer>92</integer>
 				</dict>
 			</array>
 		</dict>
@@ -1066,7 +1066,7 @@
 				<integer>110</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>332743635.74563998</real>
+			<real>332745218.37617701</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -1077,7 +1077,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 12:47 AM</string>
+		<string>Today at 1:13 AM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -2142,7 +2142,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>332743640.28136802</real>
+		<real>332745218.622329</real>
 		<string>automuter.pac</string>
 		<string>automuter.pac</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
@@ -3837,7 +3837,7 @@
 				<integer>314</integer>
 			</dict>
 		</dict>
-		<real>332743640.28212398</real>
+		<real>332745218.62581497</real>
 		<dict>
 			<key>$class</key>
 			<dict>

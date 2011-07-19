@@ -24,8 +24,7 @@ class AppDelegate
 
   def applicationDidFinishLaunching(a_notification)
       # Insert code here to initialize your application
-    self.status_item = NSStatusBar.systemStatusBar.
-      statusItemWithLength NSVariableStatusItemLength
+    self.status_item = NSStatusBar.systemStatusBar.statusItemWithLength NSVariableStatusItemLength
     status_item.highlightMode = true
     status_item.title = "Hulu Automuter"
     status_item.enabled = true
