@@ -22,6 +22,7 @@ class AppDelegate
    `#{cmd}`
   end
 
+  LOGFILE = `#{ENV['HOME']}/.automuter/automuter.log`
   def applicationDidFinishLaunching(a_notification)
       # Insert code here to initialize your application
     self.status_item = NSStatusBar.systemStatusBar.statusItemWithLength NSVariableStatusItemLength
@@ -34,27 +35,9 @@ class AppDelegate
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
     `mkdir #{ENV['HOME']}/.automuter`
-    `rm #{ENV['HOME']}/.automuter/automuter.log`
-    `touch #{ENV['HOME']}/.automuter/automuter.log`
-    cmd = "#{automuter_path} > #{ENV['HOME']}/.automuter/automuter.log 2>&1 &"
+    cmd = "#{automuter_path} >> #{LOGFILE}"
     puts cmd
     puts `#{cmd}`
-    return
-
-    self.task = NSTask.alloc.init
-    @log_path = "#{ENV['HOME']}/.automuter/automuter.log"
-    @output = NSFileHandle.fileHandleForWritingAtPath @log_path
-    if @output.nil?
-      puts "Failed to open stdout path #@log_path"
-    end
-    puts @output.class
-    task.setLaunchPath automuter_path
-    task.setStandardOutput @output
-    #task.setStandardError @output
-    task.launch
-    @pid = task.processIdentifier
-    puts task.standardOutput
-    puts "PID: #{@pid}"
   end
 
   def statusClicked(sender)
