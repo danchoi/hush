@@ -5,28 +5,30 @@
 
 require 'webrick/httpproxy'
 
+$stderr.puts "RUBY_VERSION: #{RUBY_VERSION}"
 if RUBY_VERSION > "1.9.0"
-module WEBrick
-  class HTTPRequest
-    def read_request_line(socket)
-      newsize = 2048 # orig 1024
-      @request_line = read_line(socket, newsize) if socket
-      if @request_line.bytesize >= newsize and @request_line[-1, 1] != LF
-        raise HTTPStatus::RequestURITooLarge
-      end
-      @request_time = Time.now
-      raise HTTPStatus::EOFError unless @request_line
-      if /^(\S+)\s+(\S++)(?:\s+HTTP\/(\d+\.\d+))?\r?\n/mo =~ @request_line
-        @request_method = $1
-        @unparsed_uri   = $2
-        @http_version   = HTTPVersion.new($3 ? $3 : "0.9")
-      else
-        rl = @request_line.sub(/\x0d?\x0a\z/o, '')
-        raise HTTPStatus::BadRequest, "bad Request-Line `#{rl}'."
+  $stderr.puts "patching WEBrick::HTTPRequest"
+  module WEBrick
+    class HTTPRequest
+      def read_request_line(socket)
+        newsize = 2048 # orig 1024
+        @request_line = read_line(socket, newsize) if socket
+        if @request_line.bytesize >= newsize and @request_line[-1, 1] != LF
+          raise HTTPStatus::RequestURITooLarge
+        end
+        @request_time = Time.now
+        raise HTTPStatus::EOFError unless @request_line
+        if /^(\S+)\s+(\S++)(?:\s+HTTP\/(\d+\.\d+))?\r?\n/mo =~ @request_line
+          @request_method = $1
+          @unparsed_uri   = $2
+          @http_version   = HTTPVersion.new($3 ? $3 : "0.9")
+        else
+          rl = @request_line.sub(/\x0d?\x0a\z/o, '')
+          raise HTTPStatus::BadRequest, "bad Request-Line `#{rl}'."
+        end
       end
     end
   end
-end
 end
 
 port = 8123
