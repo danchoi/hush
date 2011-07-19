@@ -39,16 +39,41 @@ class AppDelegate
     config_proxy
     self.task = NSTask.alloc.init
     task.setLaunchPath automuter_path
-    task.standardOutput = NSFileHandle.fileHandleWithStandardOutput
+    #task.standardOutput = NSFileHandle.fileHandleWithStandardOutput
+    @outpipe = NSPipe.pipe
+    task.standardOutput = @outpipe
     task.standardError = NSFileHandle.fileHandleWithStandardError
     puts task.launch
     @pid = task.processIdentifier
     puts "Process #@pid"
+
+    
+    NSNotificationCenter.defaultCenter.addObserver self,
+      selector: :'readPipe:',
+      name: "NSFileHandleReadCompletionNotification",
+      object: @outpipe.fileHandleForReading
+    @outpipe.fileHandleForReading.readInBackgroundAndNotify
+  end
+
+  def readPipe(notification)
+    data = notification.userInfo.objectForKey NSFileHandleNotificationDataItem
+    if data.length
+      string = NSString.alloc.initWithData data, encoding: NSUTF8StringEncoding
+      if string =~ /\[ad loaded\]/
+        self.status_item.title = "muting"
+      elsif string =~ /\[content resuming\]/
+        self.status_item.title = "un muting"
+      end
+      notification.object.readInBackgroundAndNotify
+    end
   end
 
   def statusClicked(sender)
     NSLog "statusClicked"
   end
+
+  # NSFileHandleConnectionAcceptedNotification
+  #
 
   def applicationWillTerminate(application)
     self.task.interrupt

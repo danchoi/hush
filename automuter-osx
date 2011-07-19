@@ -38,14 +38,15 @@ proxyproc = Proc.new{|req,res|
   end
   r = req.path
   if r =~ /adload/ 
-    puts ["ad loaded", hc.mute].join(', ')
+    puts ["[ad loaded]", hc.mute].join(', ')
     `#{hc.mute}`
   elsif r =~ /contentplaybackresume/
-    puts ["content resuming", hc.unmute].join(', ')
+    puts ["[content resuming]", hc.unmute].join(', ')
     `#{hc.unmute}`
   end
   nil
 }
+
 
 begin
   s = WEBrick::HTTPProxyServer.new(:Port => port, :BindAddress => '0.0.0.0', :RequestCallback => proxyproc)
