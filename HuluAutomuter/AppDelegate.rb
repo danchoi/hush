@@ -26,12 +26,21 @@ class AppDelegate
     run "networksetup -setautoproxyurl Ethernet #{path}"
   end
 
+  def muted
+    status_item.image = @mute_icon
+  end
+
+  def unmuted
+    status_item.image = @unmute_icon
+  end
+
   def applicationDidFinishLaunching(a_notification)
-    
     `ps aux | grep ruby | grep automuter-osx | awk '{print $2}' | xargs kill -INT`
     self.status_item = NSStatusBar.systemStatusBar.statusItemWithLength NSVariableStatusItemLength
     status_item.highlightMode = true
-    status_item.title = "Hulu Automuter"
+    @unmute_icon = NSImage.imageNamed "HA_hush_status_ON.png"
+    @mute_icon = NSImage.imageNamed "HA_hush_status_MUTING.png"
+    self.unmuted
     status_item.enabled = true
     status_item.toolTip = "HuluAutomuter"
     status_item.setAction :'statusClicked:'
@@ -41,14 +50,17 @@ class AppDelegate
     self.task = NSTask.alloc.init
     task.setLaunchPath automuter_path
     #task.standardOutput = NSFileHandle.fileHandleWithStandardOutput
-    @outpipe = NSPipe.pipe
-    task.standardOutput = @outpipe
+    configure_outpipe
     task.standardError = NSFileHandle.fileHandleWithStandardError
-    puts task.launch
+    task.launch
     @pid = task.processIdentifier
     puts "Process #@pid"
-
     
+  end
+
+  def configure_outpipe
+    @outpipe = NSPipe.pipe
+    self.task.standardOutput = @outpipe
     NSNotificationCenter.defaultCenter.addObserver self,
       selector: :'readPipe:',
       name: "NSFileHandleReadCompletionNotification",
@@ -60,10 +72,11 @@ class AppDelegate
     data = notification.userInfo.objectForKey NSFileHandleNotificationDataItem
     if data.length
       string = NSString.alloc.initWithData data, encoding: NSUTF8StringEncoding
+      puts "PIPE STRING: #{string}"
       if string =~ /\[ad loaded\]/
-        self.status_item.title = "muting"
+        self.muted
       elsif string =~ /\[content resuming\]/
-        self.status_item.title = "un muting"
+        self.unmuted
       end
       notification.object.readInBackgroundAndNotify
     end
