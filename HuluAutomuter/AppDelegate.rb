@@ -27,7 +27,8 @@ class AppDelegate
   end
 
   def applicationDidFinishLaunching(a_notification)
-      # Insert code here to initialize your application
+    
+    `ps aux | grep ruby | grep automuter-osx | awk '{print $2}' | xargs kill -INT`
     self.status_item = NSStatusBar.systemStatusBar.statusItemWithLength NSVariableStatusItemLength
     status_item.highlightMode = true
     status_item.title = "Hulu Automuter"

@@ -2570,7 +2570,7 @@
 			</dict>
 		</dict>
 		<string>file://localhost/Users/choi/projects/hulu-osx/HuluAutomuter/HuluAutomuter.xcodeproj/</string>
-		<real>332773104.54565299</real>
+		<real>332773310.22111601</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -2972,7 +2972,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>280</integer>
+					<integer>56</integer>
 				</dict>
 			</array>
 		</dict>
@@ -3236,7 +3236,7 @@
 				<integer>297</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>332773100.10697699</real>
+			<real>332773305.80228198</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -3247,7 +3247,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 8:58 AM</string>
+		<string>Today at 9:01 AM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -6157,7 +6157,7 @@
 				<integer>453</integer>
 			</dict>
 		</dict>
-		<real>332773104.549824</real>
+		<real>332773310.22569299</real>
 		<dict>
 			<key>$class</key>
 			<dict>

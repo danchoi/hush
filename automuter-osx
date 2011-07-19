@@ -7,8 +7,15 @@ require 'webrick/httpproxy'
 
 port = 8123
 
-pid = Process.pid
-`ps aux | grep ruby | grep automuter-osx | awk '{print $2}' | grep -v #{pid} | xargs kill -INT`
+standalone_mode = false
+if ARGV.first =~ /-/
+  standalone_mode = true
+end
+
+if standalone_mode
+  pid = Process.pid
+  `ps aux | grep ruby | grep automuter-osx | awk '{print $2}' | grep -v #{pid} | xargs kill -INT`
+end
 
 module HuluControl
   class OSX
@@ -78,10 +85,6 @@ def unconfig_proxy
   run "networksetup -setautoproxyurl Ethernet #{passthrough_pac_path}"
 end
 
-standalone_mode = false
-if ARGV.first =~ /-/
-  standalone_mode = true
-end
 
 trap("INT"){
   s.shutdown
