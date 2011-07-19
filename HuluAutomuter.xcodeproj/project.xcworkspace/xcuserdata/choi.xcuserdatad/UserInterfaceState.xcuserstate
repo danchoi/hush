@@ -468,7 +468,7 @@
 			</dict>
 		</dict>
 		<string>file://localhost/Users/choi/projects/hulu-osx/HuluAutomuter/HuluAutomuter.xcodeproj/</string>
-		<real>332748482.00447202</real>
+		<real>332748578.15222299</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -696,7 +696,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>332748482.004228</real>
+		<real>332748578.15214902</real>
 		<string>{0, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -2245,7 +2245,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>332748482.00713903</real>
+		<real>332748578.15435398</real>
 		<string>automuter.pac</string>
 		<string>automuter.pac</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
@@ -3917,7 +3917,7 @@
 				<integer>320</integer>
 			</dict>
 		</dict>
-		<real>332748482.00789398</real>
+		<real>332748578.15498799</real>
 		<dict>
 			<key>$class</key>
 			<dict>

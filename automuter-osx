@@ -98,6 +98,7 @@ puts "Please remember to configure your web browser to use this HTTP proxy"
 puts "Press CTRL-C to stop"
 
 if standalone_mode
+  puts "Running in standalone command-line mode"
   puts "Setting up http proxy"
   config_proxy
 end
