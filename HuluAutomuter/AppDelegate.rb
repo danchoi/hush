@@ -42,8 +42,12 @@ class AppDelegate
     status_item.toolTip = "not muting"
   end
 
-  def applicationDidFinishLaunching(a_notification)
+  def killall
     `ps aux | grep ruby | grep automuter-osx | awk '{print $2}' | xargs kill -INT`
+  end
+
+  def applicationDidFinishLaunching(a_notification)
+    killall
     self.status_item = NSStatusBar.systemStatusBar.statusItemWithLength NSVariableStatusItemLength
     status_item.highlightMode = true
     @unmute_icon = NSImage.imageNamed "HA_hush_status_ON.png"
@@ -101,7 +105,8 @@ class AppDelegate
 
   def applicationWillTerminate(application)
     self.task.interrupt
-    self.task.waitUntilExit
+    killall
+    #self.task.waitUntilExit
     unconfig_proxy
   end
 end
