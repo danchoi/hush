@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE15D0AE13D5DB8F00BAF382 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DE15D0AD13D5DB8F00BAF382 /* Credits.rtf */; };
 		DE15D0B113D62B4400BAF382 /* HA_hush_status_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = DE15D0AF13D62B4400BAF382 /* HA_hush_status_ON.png */; };
 		DE15D0B213D62B4400BAF382 /* HA_hush_status_MUTING.png in Resources */ = {isa = PBXBuildFile; fileRef = DE15D0B013D62B4400BAF382 /* HA_hush_status_MUTING.png */; };
+		DE23656213D6688C00A1BF02 /* Credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = DE23656113D6688C00A1BF02 /* Credits.rtfd */; };
 		DE36106E13D15045001DD3B1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE36106D13D15045001DD3B1 /* Cocoa.framework */; };
 		DE36107013D15045001DD3B1 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE36106F13D15045001DD3B1 /* MacRuby.framework */; };
 		DE36107713D15045001DD3B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE36107513D15045001DD3B1 /* InfoPlist.strings */; };
@@ -25,9 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DE15D0AD13D5DB8F00BAF382 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
 		DE15D0AF13D62B4400BAF382 /* HA_hush_status_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA_hush_status_ON.png; sourceTree = SOURCE_ROOT; };
 		DE15D0B013D62B4400BAF382 /* HA_hush_status_MUTING.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HA_hush_status_MUTING.png; sourceTree = SOURCE_ROOT; };
+		DE23656113D6688C00A1BF02 /* Credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = Credits.rtfd; sourceTree = SOURCE_ROOT; };
 		DE36106913D15045001DD3B1 /* Hush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE36106D13D15045001DD3B1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DE36106F13D15045001DD3B1 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = System/Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
@@ -110,9 +110,9 @@
 		DE36107B13D15045001DD3B1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE23656113D6688C00A1BF02 /* Credits.rtfd */,
 				DE15D0AF13D62B4400BAF382 /* HA_hush_status_ON.png */,
 				DE15D0B013D62B4400BAF382 /* HA_hush_status_MUTING.png */,
-				DE15D0AD13D5DB8F00BAF382 /* Credits.rtf */,
 				DEEACF0713D5BA0800B91CF3 /* APPL.icns */,
 				DEEACF0513D5B90F00B91CF3 /* HA_hush_dock.png */,
 				DEEACEFE13D5136B00B91CF3 /* automuter.pac */,
@@ -173,6 +173,7 @@
 			isa = PBXProject;
 			buildConfigurationList = DE36106313D15044001DD3B1 /* Build configuration list for PBXProject "HuluAutomuter" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -202,9 +203,9 @@
 				DEEACF0413D5433100B91CF3 /* automuter_off.pac in Resources */,
 				DEEACF0613D5B90F00B91CF3 /* HA_hush_dock.png in Resources */,
 				DEEACF0813D5BA0800B91CF3 /* APPL.icns in Resources */,
-				DE15D0AE13D5DB8F00BAF382 /* Credits.rtf in Resources */,
 				DE15D0B113D62B4400BAF382 /* HA_hush_status_ON.png in Resources */,
 				DE15D0B213D62B4400BAF382 /* HA_hush_status_MUTING.png in Resources */,
+				DE23656213D6688C00A1BF02 /* Credits.rtfd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

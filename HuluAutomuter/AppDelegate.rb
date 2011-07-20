@@ -33,11 +33,13 @@ class AppDelegate
   def muted
     puts "muting icon"
     status_item.image = @mute_icon
+    status_item.toolTip = "muting"
   end
 
   def unmuted
     puts "unmuting icon"
     status_item.image = @unmute_icon
+    status_item.toolTip = "not muting"
   end
 
   def applicationDidFinishLaunching(a_notification)
@@ -48,9 +50,8 @@ class AppDelegate
     @mute_icon = NSImage.imageNamed "HA_hush_status_MUTING.png"
     self.unmuted
     status_item.enabled = true # so the color is bright
-    status_item.toolTip = "HuluAutomuter"
-    #status_item.setAction :'statusClicked:'
-    #status_item.setTarget self
+    status_item.setAction :'statusClicked:'
+    status_item.setTarget self
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
     self.task = NSTask.alloc.init
@@ -61,7 +62,7 @@ class AppDelegate
     task.launch
     @pid = task.processIdentifier
     puts "Process #@pid"
-    
+    openAboutPanel 
   end
 
   def configure_outpipe
@@ -91,11 +92,12 @@ class AppDelegate
   end
 
   def statusClicked(sender)
-    NSLog "statusClicked"
+    openAboutPanel
   end
 
-  # NSFileHandleConnectionAcceptedNotification
-  #
+  def openAboutPanel
+    NSApplication.sharedApplication.orderFrontStandardAboutPanelWithOptions nil
+  end
 
   def applicationWillTerminate(application)
     self.task.interrupt
