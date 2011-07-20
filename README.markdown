@@ -47,7 +47,7 @@ try to keep Hush working as Hulu makes updates to their ad-serving system.
 
 Enjoy!
 
-If you're a Netflix member with instant streaming privileges, please check out
+If you're use Netflix, please check out
 [instantwatcher.com](http://instantwatcher.com)! We made that too.
 
 ## Bug reports, help, and feature requests
