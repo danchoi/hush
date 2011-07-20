@@ -1,7 +1,12 @@
 # Hush 
 
+Hush mutes Hulu commericals automatically.
 
 <div style="float: right"><img src="https://github.com/danchoi/hush/raw/master/screenshots/logo_hush_med.jpg"/></div>
+
+## Prerequisites
+
+* OS X Snow Leopard
 
 ## Download
 
