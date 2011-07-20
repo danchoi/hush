@@ -1,7 +1,7 @@
 # Hush 
 
 
-![logo](https://github.com/danchoi/hush/raw/master/Readme.rtfd/hush_logo.png)
+![logo](https://github.com/danchoi/hush/raw/master/screenshots/logo_hush_med.jpg)
 
 
 
