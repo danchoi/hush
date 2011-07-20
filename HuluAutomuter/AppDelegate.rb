@@ -15,19 +15,19 @@ class AppDelegate
   def config_proxy
     path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
     path = "file://localhost" + path
-    run "networksetup -setautoproxyurl AirPort #{path}"
-    run "networksetup -setautoproxyurl Ethernet #{path}"
-    run "networksetup -setautoproxyurl 'Ethernet 1' #{path}"
-    run "networksetup -setautoproxyurl 'Ethernet 2' #{path}"
+    services = `networksetup -listallnetworkservices`.split("\n")
+    services.select {|s| s =~ /AirPort/ || s =~ /Ethernet/}.each do |service|
+      run "networksetup -setautoproxyurl '#{service}' #{path}"
+    end
   end
 
   def unconfig_proxy
     path = NSBundle.mainBundle.pathForResource("automuter_off", ofType:"pac")
     path = "file://localhost" + path
-    run "networksetup -setautoproxyurl AirPort #{path}"
-    run "networksetup -setautoproxyurl Ethernet #{path}"
-    run "networksetup -setautoproxyurl 'Ethernet 1' #{path}"
-    run "networksetup -setautoproxyurl 'Ethernet 2' #{path}"
+    services = `networksetup -listallnetworkservices`.split("\n")
+    services.select {|s| s =~ /AirPort/ || s =~ /Ethernet/}.each do |service|
+      run "networksetup -setautoproxyurl '#{service}' #{path}"
+    end
   end
 
   def muted
