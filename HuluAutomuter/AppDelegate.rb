@@ -100,7 +100,8 @@ class AppDelegate
   end
 
   def openAboutPanel
-    NSApplication.sharedApplication.orderFrontStandardAboutPanelWithOptions nil
+    dict = nil
+    NSApplication.sharedApplication.orderFrontStandardAboutPanelWithOptions dict
   end
 
   def applicationWillTerminate(application)
