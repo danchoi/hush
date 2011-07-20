@@ -173,7 +173,6 @@
 			isa = PBXProject;
 			buildConfigurationList = DE36106313D15044001DD3B1 /* Build configuration list for PBXProject "HuluAutomuter" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

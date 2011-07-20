@@ -17,6 +17,8 @@ class AppDelegate
     path = "file://localhost" + path
     run "networksetup -setautoproxyurl AirPort #{path}"
     run "networksetup -setautoproxyurl Ethernet #{path}"
+    run "networksetup -setautoproxyurl 'Ethernet 1' #{path}"
+    run "networksetup -setautoproxyurl 'Ethernet 2' #{path}"
   end
 
   def unconfig_proxy
@@ -24,6 +26,8 @@ class AppDelegate
     path = "file://localhost" + path
     run "networksetup -setautoproxyurl AirPort #{path}"
     run "networksetup -setautoproxyurl Ethernet #{path}"
+    run "networksetup -setautoproxyurl 'Ethernet 1' #{path}"
+    run "networksetup -setautoproxyurl 'Ethernet 2' #{path}"
   end
 
   def muted
@@ -43,10 +47,10 @@ class AppDelegate
     @unmute_icon = NSImage.imageNamed "HA_hush_status_ON.png"
     @mute_icon = NSImage.imageNamed "HA_hush_status_MUTING.png"
     self.unmuted
-    status_item.enabled = true
+    status_item.enabled = true # so the color is bright
     status_item.toolTip = "HuluAutomuter"
-    status_item.setAction :'statusClicked:'
-    status_item.setTarget self
+    #status_item.setAction :'statusClicked:'
+    #status_item.setTarget self
     automuter_path = NSBundle.mainBundle.pathForResource("automuter-osx", ofType:"")
     config_proxy
     self.task = NSTask.alloc.init
@@ -71,6 +75,7 @@ class AppDelegate
   end
 
   def readPipe(notification)
+    puts "readPipe"
     data = notification.userInfo.objectForKey NSFileHandleNotificationDataItem
     if data.length
       string = NSString.alloc.initWithData data, encoding: NSUTF8StringEncoding

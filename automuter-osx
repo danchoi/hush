@@ -46,11 +46,13 @@ proxyproc = Proc.new{|req,res|
   end
   r = req.path
   if r =~ /adload/ 
-    puts ["[ad loaded]", hc.mute].join(', ')
     `#{hc.mute}`
+    $stdout.puts ["stdout [ad loaded]", hc.mute].join(', ')
+    $stdout.flush
   elsif r =~ /contentplaybackresume/
-    puts ["[content resuming]", hc.unmute].join(', ')
     `#{hc.unmute}`
+    $stdout.puts ["stdout [content resuming]", hc.unmute].join(', ')
+    $stdout.flush
   end
   nil
 }
@@ -112,4 +114,5 @@ __END__
 # pac_path = File.expand_path(File.dirname(__FILE__), 'automuter.pac')
 #`networksetup -setwebproxy AirPort 127.0.0.1 8123`
 #`networksetup -setwebproxystate AirPort on`
+##!/Users/choi/.rvm/rubies/ruby-1.8.7-p334/bin/ruby 
 
