@@ -7918,7 +7918,7 @@
 			</dict>
 		</dict>
 		<string>file://localhost/Users/choi/projects/hulu-osx/HuluAutomuter/HA_hush_status_ON.png</string>
-		<real>332824494.36534899</real>
+		<real>332824581.30950099</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -11014,7 +11014,7 @@
 				<integer>806</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>332824483.527381</real>
+			<real>332824576.30915999</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -11025,7 +11025,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 11:14 PM</string>
+		<string>Today at 11:16 PM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -31799,7 +31799,7 @@
 				<integer>1858</integer>
 			</dict>
 		</dict>
-		<real>332824494.36812598</real>
+		<real>332824581.31318301</real>
 		<string>HA_hush_status_ON.png</string>
 		<string>HA_hush_status_ON.png</string>
 		<string>IDEQuickLookEditor.Editor</string>
