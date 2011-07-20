@@ -61,7 +61,7 @@ Please submit these at either of these places:
 
 **Kaja Software**
 
-* company email: info {at} @kajasoftware.com
+* company email: info {at} kajasoftware.com
 * homepage: <http://kajasoftware.com>
 
 **Atomic Mouse**
