@@ -3,8 +3,17 @@
 
 <div style="float: right"><img src="https://github.com/danchoi/hush/raw/master/screenshots/logo_hush_med.jpg"/></div>
 
+## Download
 
+Download the current version of Hush here: 
 
+* [hush-1.0.zip](https://github.com/downloads/danchoi/hush/hush-1.0.zip)
+
+Unzip the zip archive, and copy the app to your Applications folder. Double-click it to launch.
+
+Hush is free and [open source](https://github.com/danchoi/hush)!
+
+## How to use it
 
 To use Hush, just launch the application. 
 
@@ -28,9 +37,13 @@ unmute your audio. The status bar icon will return to a gray color.
 That's all there is to it. Just quit the Hush app when you're not watching Hulu
 videos or when you're in the mood to hear the Hulu ads.
 
-If Hush stops working one day, please check our website for an update. We'll try to keep Hush working as Hulu makes updates to their ad-serving system. 
+If Hush stops working one day, please check our website for an update. We'll
+try to keep Hush working as Hulu makes updates to their ad-serving system. 
 
 Enjoy!
+
+If you're a Netflix member with instant streaming privileges, please check out
+[instantwatcher.com](http://instantwatcher.com)! We made that too.
 
 ## Bug reports, help, and feature requests
 
@@ -39,23 +52,20 @@ Please submit these at either of these places:
 * <https://github.com/danchoi/hush/issues>
 * <http://groups.google.com/group/hush-users>
 
+
 ## Credits
 
+**Kaja Software** of Cambridge, MA did the programming. **Atomic Mouse** of Somerville, MA did the branding and design. 
 
-My name is Daniel Choi. I specialize in Ruby, Rails, MySQL, PostgreSQL, and iOS
-development. I am based in Cambridge, Massachusetts, USA, and the little
-software company I run with Hoony Youn is called [Kaja Software](http://kajasoftware.com). 
+![credits](https://github.com/danchoi/hush/raw/master/screenshots/readme_credits_med.png)
 
-* Company Email: info@kajasoftware.com
-* Twitter: [@danchoi][twitter] 
-* Personal Email: dhchoi@gmail.com  
-* My Homepage: <http://danielchoi.com/software>
+**Kaja Software**
 
-[twitter]:http://twitter.com/#!/danchoi
+* company email: info {at} @kajasoftware.com
+* homepage: <http://kajasoftware.com>
 
+**Atomic Mouse**
 
-
-A Kaja Software / Atomic Mouse Co-op.
-
-
+* company email: shout {at} atomicmouse.com
+* homepage: <http://www.atomicmouse.com>
 
