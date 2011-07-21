@@ -68,7 +68,9 @@ Please submit these at either of these places:
 
 * company email: info {at} kajasoftware.com
 * homepage: <http://kajasoftware.com>
-* (personal) twitter: [@danchoi][twitter] 
+* twitter: [@danchoi][twitter] 
+
+[twitter]:http://twitter.com/#!/danchoi
 
 **Atomic Mouse**
 
