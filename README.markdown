@@ -12,7 +12,7 @@ Hush mutes your computer automatically when Hulu commercials come on.
 
 Download the current version of Hush here: 
 
-* [hush-1.0.zip](https://github.com/downloads/danchoi/hush/hush-1.0.zip)
+* [hush-1.1.zip](https://github.com/downloads/danchoi/hush/hush-1.1.zip)
 
 Unzip the zip archive, and copy the app to your Applications folder. Double-click it to launch.
 
