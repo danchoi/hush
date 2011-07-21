@@ -1,8 +1,8 @@
 # Hush 
 
-Hush mutes your computer automatically when Hulu commercials come on.
-
 <div style="float: right"><img src="https://github.com/danchoi/hush/raw/master/screenshots/logo_hush_med.jpg"/></div>
+
+Hush mutes your computer automatically when Hulu commercials come on.
 
 ## Prerequisites
 
