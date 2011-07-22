@@ -50,6 +50,12 @@ Enjoy!
 If you use Netflix, please check out
 [instantwatcher.com](http://instantwatcher.com). We made that too.
 
+## Hulu desktop users
+
+Hush apparently doesn't work for Hulu Desktop. We'll look into it and see
+if we can make a future update work.
+
+
 ## Bug reports, help, and feature requests
 
 Please submit these at either of these places:
