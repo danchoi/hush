@@ -45,11 +45,11 @@ proxyproc = Proc.new{|req,res|
     next
   end
   r = req.path
-  if r =~ /adload/ || r =~ /revenue\/request/ || r =~ /adstartvolume=/
+  if r =~ /adload/ || r =~ /revenue\/(request|start)/ || req.query =~ /adstartvolume=/
     `#{hc.mute}`
     $stdout.puts ["stdout [ad loaded]", hc.mute].join(', ')
     $stdout.flush
-  elsif r =~ /contentplaybackresume/ || r =~ /playback\/start/ || r =~ /continousplay/
+  elsif r =~ /contentplaybackresume/ || r =~ /playback\/(start|position)/ || r =~ /revenue\/end/
     `#{hc.unmute}`
     $stdout.puts ["stdout [content resuming]", hc.unmute].join(', ')
     $stdout.flush

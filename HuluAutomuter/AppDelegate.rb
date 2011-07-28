@@ -84,6 +84,7 @@ class AppDelegate
     data = notification.userInfo.objectForKey NSFileHandleNotificationDataItem
     if data.length
       string = NSString.alloc.initWithData data, encoding: NSUTF8StringEncoding
+      return if string !~ /\w+/
       puts "PIPE STRING: #{string}"
       puts "END PIPE STRING"
       if string =~ /\[ad loaded\]/m
