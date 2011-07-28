@@ -16,7 +16,7 @@ class AppDelegate
     path = NSBundle.mainBundle.pathForResource("automuter", ofType:"pac")
     path = "file://localhost" + path
     services = `networksetup -listallnetworkservices`.split("\n")
-    services.select {|s| s =~ /AirPort/ || s =~ /Ethernet/}.each do |service|
+    services.select {|s| s =~ /(AirPort|Ethernet|Wi-Fi)/}.each do |service|
       run "networksetup -setautoproxyurl '#{service}' #{path}"
     end
   end
