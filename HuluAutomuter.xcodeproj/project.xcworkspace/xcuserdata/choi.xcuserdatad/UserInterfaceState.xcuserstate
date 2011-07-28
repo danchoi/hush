@@ -8284,7 +8284,7 @@
 		<string>IDEActivityReportStringSegmentStringValue</string>
 		<real>2</real>
 		<string> </string>
-		<string>Archive</string>
+		<string>Build</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -8463,7 +8463,7 @@
 				<integer>692</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>333569980.36362702</real>
+			<real>333571084.04829699</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -8474,7 +8474,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 2:19 PM</string>
+		<string>Today at 2:38 PM</string>
 		<integer>234</integer>
 		<string>Hush</string>
 		<dict>
