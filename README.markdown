@@ -7,7 +7,7 @@ Hush mutes your computer automatically when Hulu commercials come on.
 ## Prerequisites
 
 * OS X Snow Leopard or Lion
-* a web browser 
+* a web browser or Hulu Desktop for Mac
 * Hush does notwork with Safari on OS X Lion
 
 Hush is free and [open source](https://github.com/danchoi/hush)!
@@ -16,7 +16,7 @@ Hush is free and [open source](https://github.com/danchoi/hush)!
 
 Download the current version of Hush here:
 
-* [hush-1.2.zip](https://github.com/downloads/danchoi/hush/hush-1.2.zip)
+* [hush-1.3.zip](https://github.com/downloads/danchoi/hush/hush-1.3.zip)
 
 Unzip the zip archive, and copy the app to your Applications folder. Double-click it to launch.
 
@@ -52,11 +52,6 @@ Enjoy!
 
 If you use Netflix, please check out
 [instantwatcher.com](http://instantwatcher.com). We made that too.
-
-## Hulu Desktop users
-
-Hush apparently doesn't work for Hulu Desktop. We'll look into it and see
-if we can make a future update work.
 
 
 ## Bug reports, help, and feature requests
