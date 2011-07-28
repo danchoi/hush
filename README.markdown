@@ -16,7 +16,7 @@ Hush is free and [open source](https://github.com/danchoi/hush)!
 
 Download the current version of Hush here:
 
-* [hush-1.2.zip](https://github.com/downloads/danchoi/hush/hush-1.2.zip)
+* [hush-1.3.zip](https://github.com/downloads/danchoi/hush/hush-1.3.zip)
 
 Unzip the zip archive, and copy the app to your Applications folder. Double-click it to launch.
 
