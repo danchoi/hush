@@ -10,6 +10,15 @@ Hush mutes your computer automatically when Hulu commercials come on.
 
 Hush is free and [open source](https://github.com/danchoi/hush)!
 
+## Download
+
+Download the current version of Hush here:
+
+* [hush-1.2.zip](https://github.com/downloads/danchoi/hush/hush-1.2.zip)
+
+Unzip the zip archive, and copy the app to your Applications folder. Double-click it to launch.
+
+
 ## How to use it
 
 To use Hush, just launch the application. 
