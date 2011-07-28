@@ -6,16 +6,7 @@ Hush mutes your computer automatically when Hulu commercials come on.
 
 ## Prerequisites
 
-* OS X Snow Leopard 
-* It doesn't work on Lion yet, but we're going to work on it
-
-## Download
-
-Download the current version of Hush here: 
-
-* [hush-1.1.zip](https://github.com/downloads/danchoi/hush/hush-1.1.zip)
-
-Unzip the zip archive, and copy the app to your Applications folder. Double-click it to launch.
+* OS X Snow Leopard or Lion
 
 Hush is free and [open source](https://github.com/danchoi/hush)!
 
