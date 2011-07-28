@@ -8,7 +8,9 @@ Hush mutes your computer automatically when Hulu commercials come on.
 
 * OS X Snow Leopard or Lion
 * a web browser or Hulu Desktop for Mac
-* Hush does not work with Safari on OS X Lion
+
+
+**Note**: Hush does not work with Safari on OS X Lion. Please use Chrome, Firefox, or Hulu Desktop instead.
 
 Hush is free and [open source](https://github.com/danchoi/hush)!
 
