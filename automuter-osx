@@ -49,7 +49,9 @@ proxyproc = Proc.new{|req,res|
     `#{hc.mute}`
     $stdout.puts ["stdout [ad loaded]", hc.mute].join(', ')
     $stdout.flush
-  elsif r =~ /contentplaybackresume/ || r =~ /playback\/(start|position)/ || r =~ /revenue\/end/
+  # the last condition is for hulu desktop; unforunately it causes a brief increase in volumn in 
+  # between two ads
+  elsif r =~ /contentplaybackresume/ || r =~ /playback\/(start|position)/ || r =~ /revenue\/end/  
     `#{hc.unmute}`
     $stdout.puts ["stdout [content resuming]", hc.unmute].join(', ')
     $stdout.flush
